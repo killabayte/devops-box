@@ -52,6 +52,11 @@ P_RETVAL=$?
 && unzip -o packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin \
 && rm packer_${PACKER_VERSION}_linux_amd64.zip
 
+#kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
+chmod +x ./kubectl && \
+mv ./kubectl /usr/local/bin/kubectl
+
 # clean up
 if [ ! ${REDHAT_BASED} ] ; then
   apt-get clean
